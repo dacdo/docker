@@ -11,4 +11,4 @@ RUN git clone https://github.com/dacdo/docker.git
 #EXPOSE 33333
 #ENTRYPOINT ["/docker/hello/hello.sh"]
 USER dacdo:example
-ENTRYPOINT ["/app/docker/hello/hello.sh"]
+ENTRYPOINT ["/app/docker/hello/hello.sh", "Hello Dac"]
