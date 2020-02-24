@@ -6,6 +6,7 @@ ENV APPROOT="/app" \
 APP="hello.sh" 
 WORKDIR $APPROOT
 RUN git clone https://github.com/dacdo/docker.git
+WORKDIR $APPROOT/docker/hello
 #ADD . $APPROOT
 # ENTRYPOINT ["/app/hello.sh"]
 #EXPOSE 33333
