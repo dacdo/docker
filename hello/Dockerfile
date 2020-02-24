@@ -9,4 +9,4 @@ WORKDIR $APPROOT
 ADD . $APPROOT
 # ENTRYPOINT ["/app/hello.sh"]
 EXPOSE 33333
-#ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+ENTRYPOINT ["/docker/hello/hello.sh"]
