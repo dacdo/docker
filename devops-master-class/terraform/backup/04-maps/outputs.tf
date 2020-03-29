@@ -1,0 +1,3 @@
+output "user_details" {
+  value = aws_iam_user.my_iam_users
+}
