@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-route
+  labels:
+    app: dac
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dac
+  template:
+    metadata:
+      labels:
+        app: dac
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: tmp-vol
+      volumes:
+        - name: tmp-vol
+          hostPath:
+            path: /tmp
+            type: Directory
+      
+      initContainers:
+        - name: init-config
+          image: busybox
+          volumeMounts:
+            - mountPath: /tmp
+              name: tmp-vol
+          command: [ "sh", "-c", "echo $MY_POD_IP > /tmp/index.html" ]
+
+          env:
+            - name: MY_POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+      restartPolicy: Always

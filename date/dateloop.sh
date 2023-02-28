@@ -1,6 +1,6 @@
 #!/bin/bash
 trap "exit" SIGINT
-#INTERVAL=$1
+INTERVAL=$1
 echo Configured to generate new entry every $INTERVAL seconds
 mkdir -p /var/dac
 
